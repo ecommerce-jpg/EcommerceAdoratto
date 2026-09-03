@@ -26,11 +26,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: 'Work Sans', sans-serif;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   main {
-    max-width: 560px;
+    max-width: 580px;
     margin: 0 auto;
     padding: 4rem 1.5rem 5rem;
   }
@@ -46,82 +46,94 @@
   h1 {
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    font-size: clamp(1.9rem, 5vw, 2.5rem);
     line-height: 1.15;
-    margin: 0 0 1.1rem;
-    max-width: 16ch;
+    margin: 0 0 0.9rem;
+    max-width: 18ch;
   }
 
   p.lead {
     font-size: 1.05rem;
     color: var(--ink-soft);
-    max-width: 42ch;
-    margin: 0 0 3rem;
+    max-width: 44ch;
+    margin: 0 0 3.5rem;
   }
 
-  section + section {
-    margin-top: 2.75rem;
+  article {
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--line);
   }
 
-  h2 {
+  article:first-of-type {
+    padding-top: 0;
+  }
+
+  article .date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  article h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0 0 0.6rem;
+  }
+
+  article p {
+    margin: 0;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  /* último "post": canais de acesso */
+  .canais h3 {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--ink-soft);
-    margin: 0 0 0.9rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--line);
+    margin: 1.75rem 0 0.7rem;
   }
 
-  .links {
+  .canais .links {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .links a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 1.1rem;
-    text-decoration: none;
+  .canais .links a {
     color: var(--ink);
+    text-decoration: none;
     font-weight: 500;
-    font-size: 1rem;
-    border-left: 3px solid transparent;
     border-bottom: 1px solid var(--line);
-    transition: background-color 0.15s ease, border-left-color 0.15s ease;
+    padding-bottom: 1px;
+    transition: border-color 0.15s ease, color 0.15s ease;
   }
 
-  .links:last-of-type a:last-child {
-    border-bottom: none;
+  .canais .apps a:hover,
+  .canais .apps a:focus-visible {
+    color: var(--leaf);
+    border-color: var(--leaf);
   }
 
-  section.apps .links a:hover,
-  section.apps .links a:focus-visible {
-    background: var(--leaf-tint);
-    border-left-color: var(--leaf);
+  .canais .social a:hover,
+  .canais .social a:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
   }
 
-  section.social .links a:hover,
-  section.social .links a:focus-visible {
-    background: var(--accent-tint);
-    border-left-color: var(--accent);
-  }
-
-  .links a:focus-visible {
+  a:focus-visible {
     outline: 2px solid var(--ink);
-    outline-offset: -2px;
-  }
-
-  .links small {
-    font-weight: 400;
-    color: var(--ink-soft);
-    font-size: 0.85rem;
+    outline-offset: 2px;
   }
 
   footer {
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 0.85rem;
     color: var(--ink-soft);
   }
@@ -131,31 +143,65 @@
   <main>
     <p class="wordmark">Adoratto</p>
 
-    <h1>A Adoratto, também on-line</h1>
+    <h1>Novidades Adoratto</h1>
     <p class="lead">
-      Além da loja física, a Adoratto agora tem espaço na internet: dá pra
-      fazer pedidos pelo aplicativo, acompanhar promoções e falar direto
-      com o time pelos canais abaixo. (Texto de exemplo — a ser
-      substituído pelo conteúdo definitivo.)
+      Espaço de exemplo para acompanhar novidades da Adoratto e, no final,
+      encontrar os canais de acesso ao app e às redes. Conteúdo abaixo é
+      genérico, apenas para teste.
     </p>
 
-    <section class="apps">
-      <h2>Baixe o app</h2>
-      <div class="links">
-        <a href="#">App Store <small>iOS</small></a>
-        <a href="#">Google Play <small>Android</small></a>
-        <a href="#">Site <small>Loja on-line</small></a>
-      </div>
-    </section>
+    <article>
+      <span class="date">01 set 2026</span>
+      <h2>Título de exemplo do post 1</h2>
+      <p>
+        Texto genérico de teste. Este parágrafo serve apenas para
+        visualizar como um post ficaria posicionado dentro da página,
+        sem conteúdo definitivo ainda.
+      </p>
+    </article>
 
-    <section class="social">
-      <h2>Redes e comunidade</h2>
-      <div class="links">
-        <a href="#">WhatsApp</a>
-        <a href="#">Instagram</a>
-        <a href="#">Comunidade</a>
-      </div>
-    </section>
+    <article>
+      <span class="date">28 ago 2026</span>
+      <h2>Título de exemplo do post 2</h2>
+      <p>
+        Outro texto genérico de teste, com um tamanho parecido ao
+        primeiro, só para simular como a página se comporta com mais
+        de uma postagem.
+      </p>
+    </article>
+
+    <article>
+      <span class="date">15 ago 2026</span>
+      <h2>Título de exemplo do post 3</h2>
+      <p>
+        Mais um texto de teste, sem informação real, apenas para
+        preencher o espaço até que o conteúdo definitivo seja
+        definido.
+      </p>
+    </article>
+
+    <article class="canais">
+      <span class="date">Sempre disponível</span>
+      <h2>Nossos canais</h2>
+      <p>
+        Além da loja física, a Adoratto também está on-line: baixe o
+        app, acesse o site ou fale com o time pelas redes.
+      </p>
+
+      <h3>Baixe o app</h3>
+      <ul class="links apps">
+        <li><a href="#">App Store</a></li>
+        <li><a href="#">Google Play</a></li>
+        <li><a href="#">Site</a></li>
+      </ul>
+
+      <h3>Redes e comunidade</h3>
+      <ul class="links social">
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Comunidade</a></li>
+      </ul>
+    </article>
 
     <footer>Supermercado Adoratto · Piraquara, PR</footer>
   </main>
