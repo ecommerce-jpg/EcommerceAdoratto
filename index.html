@@ -137,6 +137,47 @@
     font-size: 0.85rem;
     color: var(--ink-soft);
   }
+
+  /* A partir daqui, ajustes exclusivos para telas de PC (largas).
+     Tudo acima continua sendo a versão mobile, sem alterações. */
+  @media (min-width: 800px) {
+    main {
+      max-width: 760px;
+      padding: 5.5rem 2rem 6rem;
+    }
+
+    h1 {
+      font-size: 2.9rem;
+    }
+
+    p.lead {
+      font-size: 1.15rem;
+    }
+
+    article {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2rem;
+      padding: 2.5rem 0;
+    }
+
+    article .date {
+      margin-bottom: 0;
+      padding-top: 0.3rem;
+      grid-column: 1;
+    }
+
+    article h2,
+    article > p,
+    article h3,
+    article .links {
+      grid-column: 2;
+    }
+
+    article h2 {
+      font-size: 1.55rem;
+    }
+  }
 </style>
 </head>
 <body>
