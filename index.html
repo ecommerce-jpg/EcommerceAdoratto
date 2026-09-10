@@ -6,7 +6,7 @@
 <title>Adoratto Online</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f6f2e7;
@@ -29,34 +29,78 @@
     line-height: 1.6;
   }
 
-  main {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     max-width: 580px;
     margin: 0 auto;
-    padding: 4rem 1.5rem 5rem;
+    padding: 2.5rem 1.5rem 0;
   }
 
   .wordmark {
     font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 1.05rem;
+    font-weight: 700;
+    font-size: 1.15rem;
     color: var(--leaf);
-    margin: 0 0 2.5rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+  }
+
+  main {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  .hero {
+    position: relative;
+    padding: 3rem 0 3.5rem;
+  }
+
+  .hero svg.blob {
+    position: absolute;
+    top: -2.5rem;
+    right: -3rem;
+    width: 190px;
+    height: 190px;
+    z-index: 0;
+    opacity: 0.55;
   }
 
   h1 {
+    position: relative;
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: clamp(1.9rem, 5vw, 2.5rem);
-    line-height: 1.15;
-    margin: 0 0 0.9rem;
-    max-width: 18ch;
+    font-size: clamp(2rem, 6vw, 2.7rem);
+    line-height: 1.14;
+    margin: 0 0 1.1rem;
+    max-width: 15ch;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
   }
 
   p.lead {
-    font-size: 1.05rem;
+    position: relative;
+    font-size: 1.08rem;
     color: var(--ink-soft);
-    max-width: 44ch;
-    margin: 0 0 3.5rem;
+    max-width: 42ch;
+    margin: 0;
+  }
+
+  .feed-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.25rem;
   }
 
   article {
@@ -65,7 +109,8 @@
   }
 
   article:first-of-type {
-    padding-top: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
   }
 
   article .date {
@@ -89,6 +134,16 @@
   }
 
   /* último "post": canais de acesso */
+  .canais h2::before {
+    content: '';
+    display: inline-block;
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 0.5em;
+  }
+
   .canais h3 {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
@@ -133,7 +188,9 @@
   }
 
   footer {
-    margin-top: 3rem;
+    max-width: 580px;
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
     font-size: 0.85rem;
     color: var(--ink-soft);
   }
@@ -141,17 +198,38 @@
   /* A partir daqui, ajustes exclusivos para telas de PC (largas).
      Tudo acima continua sendo a versão mobile, sem alterações. */
   @media (min-width: 800px) {
-    main {
+    header,
+    main,
+    footer {
       max-width: 760px;
-      padding: 5.5rem 2rem 6rem;
+    }
+
+    main {
+      padding: 0 2rem 6rem;
+    }
+
+    header {
+      padding: 3rem 2rem 0;
+    }
+
+    .hero {
+      padding: 4rem 0 4.5rem;
+    }
+
+    .hero svg.blob {
+      width: 260px;
+      height: 260px;
+      top: -3rem;
+      right: -2rem;
     }
 
     h1 {
-      font-size: 2.9rem;
+      font-size: 3.1rem;
+      max-width: 17ch;
     }
 
     p.lead {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
     }
 
     article {
@@ -162,9 +240,9 @@
     }
 
     article .date {
+      grid-column: 1;
       margin-bottom: 0;
       padding-top: 0.3rem;
-      grid-column: 1;
     }
 
     article h2,
@@ -175,21 +253,33 @@
     }
 
     article h2 {
-      font-size: 1.55rem;
+      font-size: 1.6rem;
     }
   }
 </style>
 </head>
 <body>
-  <main>
-    <p class="wordmark">Adoratto</p>
+  <header>
+    <span class="wordmark">Adoratto</span>
+    <span class="tag">Direto da loja</span>
+  </header>
 
-    <h1>Novidades Adoratto</h1>
-    <p class="lead">
-      Espaço de exemplo para acompanhar novidades da Adoratto e, no final,
-      encontrar os canais de acesso ao app e às redes. Conteúdo abaixo é
-      genérico, apenas para teste.
-    </p>
+  <main>
+    <section class="hero">
+      <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#234d3b" d="M45.7,-58.4C58.9,-49.6,68.8,-34.6,72.1,-18.1C75.4,-1.6,72.1,16.4,63.2,31.1C54.3,45.8,39.8,57.2,23.4,63.1C7,69,-11.3,69.4,-27.6,63.5C-43.9,57.6,-58.2,45.4,-65.8,29.9C-73.4,14.4,-74.3,-4.4,-68.2,-20.3C-62.1,-36.2,-49,-49.2,-34.4,-57.6C-19.8,-66,-9.9,-69.8,3.9,-75.1C17.7,-80.4,32.5,-67.2,45.7,-58.4Z" transform="translate(100 100)"/>
+      </svg>
+      <h1>As novidades da Adoratto, <em>direto</em> pra você</h1>
+      <p class="lead">
+        Este é o canal oficial da Adoratto para te manter por dentro:
+        promoções, avisos da loja e novidades do app, sempre em
+        primeira mão. No fim da página você encontra os canais para
+        pedir, seguir e falar com a gente. (Site de apresentação —
+        conteúdo ainda de exemplo.)
+      </p>
+    </section>
+
+    <p class="feed-label">Últimas notícias</p>
 
     <article>
       <span class="date">01 set 2026</span>
@@ -243,8 +333,8 @@
         <li><a href="#">Comunidade</a></li>
       </ul>
     </article>
-
-    <footer>Supermercado Adoratto · Piraquara, PR</footer>
   </main>
+
+  <footer>Supermercado Adoratto · Piraquara, PR</footer>
 </body>
 </html>
