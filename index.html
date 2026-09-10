@@ -10,6 +10,7 @@
 <style>
   :root {
     --bg: #f6f2e7;
+    --panel: #efe8d6;
     --ink: #21261e;
     --ink-soft: #4c5245;
     --leaf: #234d3b;
@@ -29,312 +30,428 @@
     line-height: 1.6;
   }
 
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Header / nav ---------- */
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.75rem 0;
   }
 
   .wordmark {
     font-family: 'Fraunces', serif;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--leaf);
   }
 
-  .tag {
-    font-size: 0.8rem;
+  nav {
+    display: flex;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--ink-soft);
+  }
+
+  nav a:hover,
+  nav a:focus-visible { color: var(--ink); }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn:hover, .btn:focus-visible { background: #a5461f; }
+
+  .btn.ghost {
+    background: transparent;
     border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 0.3rem 0.8rem;
+    color: var(--ink);
   }
 
-  main {
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 0 1.5rem 5rem;
+  .btn.ghost:hover, .btn.ghost:focus-visible {
+    background: var(--panel);
   }
 
+  /* ---------- Hero ---------- */
   .hero {
-    position: relative;
-    padding: 3rem 0 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 2rem 0 4rem;
   }
 
-  .hero svg.blob {
-    position: absolute;
-    top: -2.5rem;
-    right: -3rem;
-    width: 190px;
-    height: 190px;
-    z-index: 0;
-    opacity: 0.55;
+  .hero .tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--leaf);
+    background: var(--leaf-tint);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.1rem;
   }
 
-  h1 {
-    position: relative;
+  .hero h1 {
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: clamp(2rem, 6vw, 2.7rem);
-    line-height: 1.14;
+    font-size: clamp(2rem, 6vw, 2.9rem);
+    line-height: 1.15;
     margin: 0 0 1.1rem;
-    max-width: 15ch;
   }
 
-  h1 em {
+  .hero h1 em {
     font-style: normal;
     color: var(--accent);
   }
 
-  p.lead {
+  .hero p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 46ch;
+    margin: 0 0 1.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .art {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    background: linear-gradient(155deg, var(--leaf-tint), var(--panel));
     position: relative;
-    font-size: 1.08rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .art svg { width: 55%; height: 55%; }
+
+  .art span {
+    position: absolute;
+    bottom: 0.9rem;
+    right: 1rem;
+    font-size: 0.75rem;
     color: var(--ink-soft);
-    max-width: 42ch;
-    margin: 0;
+    background: rgba(246,242,231,0.85);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
   }
 
-  .feed-label {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    margin: 0 0 0.25rem;
-  }
-
-  article {
-    padding: 2.25rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  article:first-of-type {
-    padding-top: 1.5rem;
+  /* ---------- Seção explicativa ---------- */
+  .explica {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 3rem 0;
     border-top: 1px solid var(--line);
   }
 
-  article .date {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-    margin-bottom: 0.5rem;
-  }
-
-  article h2 {
+  .explica h2 {
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.9rem;
+    margin: 0 0 1rem;
+  }
+
+  .explica h2 em {
+    font-style: normal;
+    color: var(--leaf);
+  }
+
+  .explica p {
+    color: var(--ink-soft);
+    margin: 0 0 1rem;
+    max-width: 48ch;
+  }
+
+  /* ---------- Vantagens ---------- */
+  .vantagens {
+    padding: 3rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .vantagens > p.eyebrow {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.4rem;
+  }
+
+  .vantagens h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    margin: 0 0 2rem;
+  }
+
+  .vantagens h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: var(--panel);
+  }
+
+  .card .icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--leaf);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .card h3 {
+    font-size: 1.02rem;
+    margin: 0 0 0.4rem;
+  }
+
+  .card p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ---------- Canais (CTA final) ---------- */
+  .canais {
+    margin: 3rem 0 0;
+    padding: 3rem 1.75rem;
+    border-radius: 16px;
+    background: var(--leaf);
+    color: #fff;
+  }
+
+  .canais h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.8rem;
     margin: 0 0 0.6rem;
   }
 
-  article p {
-    margin: 0;
-    color: var(--ink-soft);
+  .canais > p {
+    color: #d9e4dc;
+    margin: 0 0 1.75rem;
     max-width: 46ch;
-  }
-
-  /* último "post": canais de acesso */
-  .canais h2::before {
-    content: '';
-    display: inline-block;
-    width: 0.55em;
-    height: 0.55em;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-right: 0.5em;
   }
 
   .canais h3 {
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--ink-soft);
-    margin: 1.75rem 0 0.7rem;
+    font-size: 0.9rem;
+    color: #b9c9bf;
+    margin: 1.5rem 0 0.7rem;
   }
+
+  .canais h3:first-of-type { margin-top: 0; }
 
   .canais .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.6rem 1.5rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .canais .links a {
-    color: var(--ink);
+    color: #fff;
     text-decoration: none;
     font-weight: 500;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(255,255,255,0.35);
     padding-bottom: 1px;
-    transition: border-color 0.15s ease, color 0.15s ease;
   }
 
-  .canais .apps a:hover,
-  .canais .apps a:focus-visible {
-    color: var(--leaf);
-    border-color: var(--leaf);
+  .canais .links a:hover,
+  .canais .links a:focus-visible {
+    border-color: #fff;
   }
 
-  .canais .social a:hover,
-  .canais .social a:focus-visible {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  a:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: 2px;
-  }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .canais a:focus-visible { outline-color: #fff; }
 
   footer {
-    max-width: 580px;
-    margin: 3rem auto 0;
-    padding: 0 1.5rem;
+    padding: 2.5rem 0 3rem;
     font-size: 0.85rem;
     color: var(--ink-soft);
   }
 
-  /* A partir daqui, ajustes exclusivos para telas de PC (largas).
-     Tudo acima continua sendo a versão mobile, sem alterações. */
-  @media (min-width: 800px) {
-    header,
-    main,
-    footer {
-      max-width: 760px;
-    }
-
-    main {
-      padding: 0 2rem 6rem;
-    }
-
-    header {
-      padding: 3rem 2rem 0;
-    }
-
+  /* ---------- PC ---------- */
+  @media (min-width: 900px) {
     .hero {
-      padding: 4rem 0 4.5rem;
+      grid-template-columns: 1.1fr 1fr;
     }
 
-    .hero svg.blob {
-      width: 260px;
-      height: 260px;
-      top: -3rem;
-      right: -2rem;
+    .explica {
+      grid-template-columns: 1fr 1.1fr;
     }
 
-    h1 {
-      font-size: 3.1rem;
-      max-width: 17ch;
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    p.lead {
-      font-size: 1.2rem;
+    .canais {
+      padding: 3.5rem 3rem;
     }
 
-    article {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      gap: 2rem;
-      padding: 2.5rem 0;
-    }
-
-    article .date {
-      grid-column: 1;
-      margin-bottom: 0;
-      padding-top: 0.3rem;
-    }
-
-    article h2,
-    article > p,
-    article h3,
-    article .links {
-      grid-column: 2;
-    }
-
-    article h2 {
-      font-size: 1.6rem;
+    .canais-groups {
+      display: flex;
+      gap: 4rem;
     }
   }
 </style>
 </head>
 <body>
-  <header>
-    <span class="wordmark">Adoratto</span>
-    <span class="tag">Direto da loja</span>
-  </header>
+  <div class="wrap">
+    <header>
+      <span class="wordmark">Adoratto</span>
+      <nav>
+        <a href="#">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#vantagens">Vantagens</a>
+        <a href="#canais">Contato</a>
+      </nav>
+      <a class="btn" href="#canais">Baixe o app</a>
+    </header>
 
-  <main>
     <section class="hero">
-      <svg class="blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#234d3b" d="M45.7,-58.4C58.9,-49.6,68.8,-34.6,72.1,-18.1C75.4,-1.6,72.1,16.4,63.2,31.1C54.3,45.8,39.8,57.2,23.4,63.1C7,69,-11.3,69.4,-27.6,63.5C-43.9,57.6,-58.2,45.4,-65.8,29.9C-73.4,14.4,-74.3,-4.4,-68.2,-20.3C-62.1,-36.2,-49,-49.2,-34.4,-57.6C-19.8,-66,-9.9,-69.8,3.9,-75.1C17.7,-80.4,32.5,-67.2,45.7,-58.4Z" transform="translate(100 100)"/>
-      </svg>
-      <h1>As novidades da Adoratto, <em>direto</em> pra você</h1>
-      <p class="lead">
-        Este é o canal oficial da Adoratto para te manter por dentro:
-        promoções, avisos da loja e novidades do app, sempre em
-        primeira mão. No fim da página você encontra os canais para
-        pedir, seguir e falar com a gente. (Site de apresentação —
-        conteúdo ainda de exemplo.)
-      </p>
+      <div>
+        <span class="tag">Loja online</span>
+        <h1>As compras da Adoratto, agora também no <em>seu celular</em></h1>
+        <p>
+          Sem fila e sem sair de casa: peça pelo app ou pelo site e receba
+          os produtos da sua Adoratto de sempre. (Seção de apresentação —
+          conteúdo ainda de exemplo.)
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#canais">Baixe o app</a>
+          <a class="btn ghost" href="#sobre">Como funciona</a>
+        </div>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 45h60l-6 45a8 8 0 0 1-8 7H44a8 8 0 0 1-8-7l-6-45Z" stroke="#234d3b" stroke-width="4"/>
+          <path d="M42 45V33a18 18 0 0 1 36 0v12" stroke="#c2542a" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span>imagem ilustrativa</span>
+      </div>
     </section>
 
-    <p class="feed-label">Últimas notícias</p>
+    <section class="explica" id="sobre">
+      <div class="art" style="aspect-ratio:1/1">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="34" stroke="#234d3b" stroke-width="4"/>
+          <path d="M60 40v20l14 8" stroke="#c2542a" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <span>imagem ilustrativa</span>
+      </div>
+      <div>
+        <h2>Como funciona a <em>loja online</em> da Adoratto</h2>
+        <p>
+          A rotina corrida faz da ida ao mercado uma tarefa a mais na
+          lista. Pensando nisso, a Adoratto colocou os corredores da loja
+          no seu bolso: mesmos produtos, mesmas ofertas, com alguns
+          toques a menos de distância.
+        </p>
+        <p>
+          Ideal para quem valoriza praticidade sem abrir mão da confiança
+          na loja de sempre. (Texto de exemplo.)
+        </p>
+      </div>
+    </section>
 
-    <article>
-      <span class="date">01 set 2026</span>
-      <h2>Título de exemplo do post 1</h2>
-      <p>
-        Texto genérico de teste. Este parágrafo serve apenas para
-        visualizar como um post ficaria posicionado dentro da página,
-        sem conteúdo definitivo ainda.
-      </p>
-    </article>
+    <section class="vantagens" id="vantagens">
+      <p class="eyebrow">Por que comprar online</p>
+      <h2>Vantagens da <em>Adoratto</em> digital</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>Praticidade</h3>
+          <p>Peça de onde estiver, sem fila e sem precisar sair de casa.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>Mesmos preços da loja</h3>
+          <p>As ofertas da loja física valem também no pedido on-line.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>Entrega combinada</h3>
+          <p>Escolha o horário que funciona melhor pra receber seu pedido.</p>
+        </div>
+        <div class="card">
+          <div class="icon">4</div>
+          <h3>Suporte direto</h3>
+          <p>Fale com o time da Adoratto pelo WhatsApp sempre que precisar.</p>
+        </div>
+      </div>
+    </section>
 
-    <article>
-      <span class="date">28 ago 2026</span>
-      <h2>Título de exemplo do post 2</h2>
-      <p>
-        Outro texto genérico de teste, com um tamanho parecido ao
-        primeiro, só para simular como a página se comporta com mais
-        de uma postagem.
-      </p>
-    </article>
-
-    <article>
-      <span class="date">15 ago 2026</span>
-      <h2>Título de exemplo do post 3</h2>
-      <p>
-        Mais um texto de teste, sem informação real, apenas para
-        preencher o espaço até que o conteúdo definitivo seja
-        definido.
-      </p>
-    </article>
-
-    <article class="canais">
-      <span class="date">Sempre disponível</span>
+    <section class="canais" id="canais">
       <h2>Nossos canais</h2>
-      <p>
-        Além da loja física, a Adoratto também está on-line: baixe o
-        app, acesse o site ou fale com o time pelas redes.
-      </p>
+      <p>Baixe o app, acesse o site ou fale com a gente pelas redes.</p>
 
-      <h3>Baixe o app</h3>
-      <ul class="links apps">
-        <li><a href="#">App Store</a></li>
-        <li><a href="#">Google Play</a></li>
-        <li><a href="#">Site</a></li>
-      </ul>
+      <div class="canais-groups">
+        <div>
+          <h3>Baixe o app</h3>
+          <ul class="links">
+            <li><a href="#">App Store</a></li>
+            <li><a href="#">Google Play</a></li>
+            <li><a href="#">Site</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Redes e comunidade</h3>
+          <ul class="links">
+            <li><a href="#">WhatsApp</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Comunidade</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-      <h3>Redes e comunidade</h3>
-      <ul class="links social">
-        <li><a href="#">WhatsApp</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Comunidade</a></li>
-      </ul>
-    </article>
-  </main>
-
-  <footer>Supermercado Adoratto · Piraquara, PR</footer>
+    <footer>Supermercado Adoratto · Piraquara, PR</footer>
+  </div>
 </body>
 </html>
