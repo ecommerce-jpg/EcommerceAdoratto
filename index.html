@@ -50,11 +50,11 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
-    padding: 1.75rem 1.5rem;
+    padding: 0.9rem 1.5rem;
   }
 
   .wordmark {
-    height: 72px;
+    height: 48px;
     width: auto;
     display: block;
   }
@@ -78,7 +78,7 @@
   .btn {
     display: inline-block;
     background: var(--accent);
-    color: #fff;
+    color: var(--ink);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
@@ -87,7 +87,7 @@
     transition: background-color 0.15s ease;
   }
 
-  .btn:hover, .btn:focus-visible { background: #a5461f; }
+  .btn:hover, .btn:focus-visible { background: #a5461f; color: var(--bg); }
 
   .btn.ghost {
     background: transparent;
@@ -249,11 +249,22 @@
   }
 
   .phone-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 0.5rem;
   }
+
+  .phone-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+  }
+
+  .phone-arrow--prev { left: -4px; }
+  .phone-arrow--next { right: -4px; }
 
   .phone-frame {
     width: 168px;
@@ -325,6 +336,13 @@
     opacity: 1;
   }
 
+  .phone-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
   .phone-dots {
     display: flex;
     gap: 0.5rem;
@@ -334,15 +352,47 @@
   }
 
   .phone-dots li {
-    width: 7px;
-    height: 7px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: var(--line);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, width 0.3s ease;
   }
 
   .phone-dots li.is-active {
-    background: var(--wordmark);
+    width: 22px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .phone-counter {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .phone-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .phone-arrow:hover,
+  .phone-arrow:focus-visible {
+    background: var(--detail-tint);
+    border-color: var(--detail);
   }
 
   .card {
@@ -381,8 +431,8 @@
     margin: 3rem 0 0;
     padding: 3rem 1.75rem;
     border-radius: 16px;
-    background: var(--accent);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
   }
 
   .canais h2 {
@@ -392,9 +442,13 @@
     margin: 0 0 0.6rem;
   }
 
+  .canais h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
   .canais > p {
-    color: var(--ink);
-    opacity: 0.85;
+    color: rgba(241, 233, 228, 0.78);
     margin: 0 0 1.75rem;
     max-width: 46ch;
   }
@@ -403,8 +457,7 @@
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--ink);
-    opacity: 0.75;
+    color: rgba(241, 233, 228, 0.65);
     margin: 1.5rem 0 0.7rem;
   }
 
@@ -413,27 +466,34 @@
   .canais .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem 1.5rem;
+    gap: 0.6rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .canais .links a {
-    color: var(--ink);
+    display: inline-block;
+    color: var(--bg);
     text-decoration: none;
     font-weight: 500;
-    border-bottom: 1px solid rgba(95, 59, 46, 0.4);
-    padding-bottom: 1px;
+    font-size: 0.9rem;
+    background: rgba(241, 233, 228, 0.1);
+    border: 1px solid rgba(241, 233, 228, 0.25);
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   }
 
   .canais .links a:hover,
   .canais .links a:focus-visible {
-    border-color: var(--ink);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink);
   }
 
   a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .canais a:focus-visible { outline-color: var(--ink); }
+  .canais a:focus-visible { outline-color: var(--bg); }
 
   footer {
     padding: 2.5rem 0 3rem;
@@ -457,7 +517,7 @@
   /* ---------- PC ---------- */
   @media (min-width: 900px) {
     .wordmark {
-      height: 92px;
+      height: 60px;
     }
 
     .hero {
@@ -475,6 +535,9 @@
     .phone-row {
       gap: 3.5rem;
     }
+
+    .phone-arrow--prev { left: -56px; }
+    .phone-arrow--next { right: -56px; }
 
     .phone-frame {
       width: 230px;
@@ -564,6 +627,8 @@
 
       <div class="tutorial">
         <div class="phone-row">
+          <button type="button" class="phone-arrow phone-arrow--prev" id="phoneArrowPrev" aria-label="Tela anterior">‹</button>
+
           <div class="phone-frame phone-frame--side">
             <img id="phonePrev" src="images/tutorial-8.jpg" alt="Tela anterior">
           </div>
@@ -600,22 +665,28 @@
           <div class="phone-frame phone-frame--side">
             <img id="phoneNext" src="images/tutorial-2.jpg" alt="Próxima tela">
           </div>
+
+          <button type="button" class="phone-arrow phone-arrow--next" id="phoneArrowNext" aria-label="Próxima tela">›</button>
         </div>
-        <ul class="phone-dots" id="phoneDots">
-          <li class="is-active"></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+
+        <div class="phone-controls">
+          <ul class="phone-dots" id="phoneDots">
+            <li class="is-active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <p class="phone-counter"><span id="phoneCounterCurrent">1</span> de <span id="phoneCounterTotal">8</span></p>
+        </div>
       </div>
     </section>
 
     <section class="canais" id="canais">
-      <h2>Nossos canais</h2>
+      <h2>Nossos <em>canais</em></h2>
       <p>Baixe o app, acesse o site ou fale com a gente pelas redes.</p>
 
       <div class="canais-groups">
@@ -672,17 +743,25 @@
       var dots = document.querySelectorAll('#phoneDots li');
       var prevPhone = document.getElementById('phonePrev');
       var nextPhone = document.getElementById('phoneNext');
+      var arrowPrev = document.getElementById('phoneArrowPrev');
+      var arrowNext = document.getElementById('phoneArrowNext');
+      var counterCurrent = document.getElementById('phoneCounterCurrent');
+      var counterTotal = document.getElementById('phoneCounterTotal');
       if (!slides.length) return;
 
       // Lista de imagens de cada tela, na mesma ordem do carrossel central
       var images = Array.prototype.map.call(slides, function (slide) {
         return slide.querySelector('img').getAttribute('src');
       });
+      var total = images.length;
 
       var current = 0;
       var forwardDelay = 2200; // tempo parado em cada tela, avançando
       var reverseDelay = 350;  // tempo entre telas, no retorno rápido
       var direction = 1;       // 1 = avançando, -1 = voltando rápido
+      var timer = null;
+
+      if (counterTotal) counterTotal.textContent = total;
 
       function show(index) {
         slides.forEach(function (slide, i) {
@@ -691,10 +770,10 @@
         dots.forEach(function (dot, i) {
           dot.classList.toggle('is-active', i === index);
         });
+        if (counterCurrent) counterCurrent.textContent = index + 1;
 
         // Celulares menores mostram sempre a tela anterior e a seguinte,
         // acompanhando o carrossel central
-        var total = images.length;
         var prevIndex = (index - 1 + total) % total;
         var nextIndex = (index + 1) % total;
         if (prevPhone) prevPhone.src = images[prevIndex];
@@ -702,7 +781,7 @@
       }
 
       function step() {
-        if (direction === 1 && current === slides.length - 1) {
+        if (direction === 1 && current === total - 1) {
           direction = -1; // chegou no fim, começa o retorno rápido
         } else if (direction === -1 && current === 0) {
           direction = 1; // voltou ao início, retoma avanço normal
@@ -712,10 +791,33 @@
         show(current);
 
         var delay = direction === 1 ? forwardDelay : reverseDelay;
-        setTimeout(step, delay);
+        timer = setTimeout(step, delay);
       }
 
-      setTimeout(step, forwardDelay);
+      function restartAuto() {
+        if (timer) clearTimeout(timer);
+        direction = 1;
+        timer = setTimeout(step, forwardDelay);
+      }
+
+      // Setas: navegação manual, pausando e retomando o avanço automático
+      if (arrowPrev) {
+        arrowPrev.addEventListener('click', function () {
+          current = (current - 1 + total) % total;
+          show(current);
+          restartAuto();
+        });
+      }
+
+      if (arrowNext) {
+        arrowNext.addEventListener('click', function () {
+          current = (current + 1) % total;
+          show(current);
+          restartAuto();
+        });
+      }
+
+      timer = setTimeout(step, forwardDelay);
     })();
   </script>
 </body>
