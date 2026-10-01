@@ -9,15 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f6f2e7;
-    --panel: #efe8d6;
-    --ink: #21261e;
-    --ink-soft: #4c5245;
-    --leaf: #234d3b;
-    --leaf-tint: #e5ebe1;
-    --accent: #c2542a;
-    --accent-tint: #f3e3d9;
-    --line: #d9d2bd;
+    --bg: #f1e9e4;           /* creme — fundo da página */
+    --panel: #e8dccf;         /* tom derivado do creme, para blocos levemente destacados */
+    --ink: #5f3b2e;           /* marrom — títulos, textos e rodapé */
+    --ink-soft: rgba(95, 59, 46, 0.7); /* marrom suavizado, para texto secundário */
+    --detail: #9f5614;        /* caramelo — ícones e detalhes */
+    --detail-tint: rgba(159, 86, 20, 0.12);
+    --accent: #ff9713;        /* laranja — botões e destaques */
+    --accent-tint: rgba(255, 151, 19, 0.16);
+    --line: rgba(95, 59, 46, 0.18);
+    --wordmark: #000000;      /* preto — logotipo e indicadores do carrossel, por pedido do cliente */
   }
 
   * { box-sizing: border-box; }
@@ -52,7 +53,7 @@
     font-family: 'Fraunces', serif;
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--leaf);
+    color: var(--wordmark);
   }
 
   nav {
@@ -107,8 +108,8 @@
   .hero .tag {
     display: inline-block;
     font-size: 0.8rem;
-    color: var(--leaf);
-    background: var(--leaf-tint);
+    color: var(--detail);
+    background: var(--detail-tint);
     border-radius: 999px;
     padding: 0.35rem 0.9rem;
     margin-bottom: 1.1rem;
@@ -143,7 +144,7 @@
   .art {
     aspect-ratio: 4 / 3;
     border-radius: 16px;
-    background: linear-gradient(155deg, var(--leaf-tint), var(--panel));
+    background: linear-gradient(155deg, var(--detail-tint), var(--panel));
     position: relative;
     overflow: hidden;
     display: flex;
@@ -197,7 +198,7 @@
 
   .explica h2 em {
     font-style: normal;
-    color: var(--leaf);
+    color: var(--detail);
   }
 
   .explica p {
@@ -299,7 +300,7 @@
     text-align: center;
     font-size: 0.85rem;
     color: var(--ink-soft);
-    background: var(--leaf-tint);
+    background: var(--detail-tint);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
@@ -338,7 +339,7 @@
   }
 
   .phone-dots li.is-active {
-    background: var(--accent);
+    background: var(--wordmark);
   }
 
   .card {
@@ -377,8 +378,8 @@
     margin: 3rem 0 0;
     padding: 3rem 1.75rem;
     border-radius: 16px;
-    background: var(--leaf);
-    color: #fff;
+    background: var(--accent);
+    color: var(--ink);
   }
 
   .canais h2 {
@@ -389,7 +390,8 @@
   }
 
   .canais > p {
-    color: #d9e4dc;
+    color: var(--ink);
+    opacity: 0.85;
     margin: 0 0 1.75rem;
     max-width: 46ch;
   }
@@ -398,7 +400,8 @@
     font-family: 'Work Sans', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
-    color: #b9c9bf;
+    color: var(--ink);
+    opacity: 0.75;
     margin: 1.5rem 0 0.7rem;
   }
 
@@ -414,20 +417,20 @@
   }
 
   .canais .links a {
-    color: #fff;
+    color: var(--ink);
     text-decoration: none;
     font-weight: 500;
-    border-bottom: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 1px solid rgba(95, 59, 46, 0.4);
     padding-bottom: 1px;
   }
 
   .canais .links a:hover,
   .canais .links a:focus-visible {
-    border-color: #fff;
+    border-color: var(--ink);
   }
 
   a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .canais a:focus-visible { outline-color: #fff; }
+  .canais a:focus-visible { outline-color: var(--ink); }
 
   footer {
     padding: 2.5rem 0 3rem;
