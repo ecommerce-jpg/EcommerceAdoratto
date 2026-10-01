@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofertas · Adoratto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f1e9e4;
+    --panel: #e8dccf;
+    --ink: #5f3b2e;
+    --ink-soft: rgba(95, 59, 46, 0.7);
+    --detail: #9f5614;
+    --detail-tint: rgba(159, 86, 20, 0.12);
+    --accent: #ff9713;
+    --accent-tint: rgba(255, 151, 19, 0.16);
+    --line: rgba(95, 59, 46, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Header / nav (igual à página inicial) ---------- */
+  .header-band { background: var(--ink); }
+
+  header.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .wordmark { height: 48px; width: auto; display: block; }
+
+  nav { display: flex; gap: 1.75rem; flex-wrap: wrap; }
+
+  nav a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(241, 233, 228, 0.8);
+  }
+
+  nav a:hover, nav a:focus-visible { color: var(--bg); }
+
+  nav a.is-active { color: var(--bg); font-weight: 600; }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+  }
+
+  .btn:hover, .btn:focus-visible { background: #a5461f; color: var(--bg); }
+
+  /* ---------- Banner ---------- */
+  .banner {
+    margin: 2rem 0;
+    padding: 2.5rem 1.75rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--detail));
+    color: var(--bg);
+    text-align: center;
+  }
+
+  .banner .tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    background: rgba(241, 233, 228, 0.2);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .banner h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0 0 0.6rem;
+  }
+
+  .banner p {
+    margin: 0 auto;
+    max-width: 50ch;
+    color: rgba(241, 233, 228, 0.9);
+  }
+
+  /* ---------- Calendário de ofertas ---------- */
+  .calendario {
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .calendario h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 0 0 0.3rem;
+  }
+
+  .calendario h2 em { font-style: normal; color: var(--detail); }
+
+  .calendario > p {
+    color: var(--ink-soft);
+    margin: 0 0 1.5rem;
+    max-width: 50ch;
+  }
+
+  .semana {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+  }
+
+  .dia {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.1rem;
+    background: var(--panel);
+  }
+
+  .dia .dia-nome {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--detail);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+
+  .dia h3 {
+    font-size: 1rem;
+    margin: 0 0 0.3rem;
+  }
+
+  .dia p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .dia.hoje {
+    border-color: var(--accent);
+    background: var(--accent-tint);
+  }
+
+  .dia.hoje .dia-nome { color: var(--ink); }
+
+  /* ---------- Destaques (mais ofertas) ---------- */
+  .destaques {
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .destaques h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .destaques h2 em { font-style: normal; color: var(--accent); }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: var(--panel);
+  }
+
+  .card .preco {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--detail);
+    background: var(--detail-tint);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .card h3 { font-size: 1.02rem; margin: 0 0 0.4rem; }
+  .card p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+
+  .nota {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 1.5rem 0 0;
+  }
+
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  footer .credit a { color: var(--ink-soft); }
+  footer .credit a:hover, footer .credit a:focus-visible { color: var(--ink); }
+
+  /* ---------- PC ---------- */
+  @media (min-width: 900px) {
+    .wordmark { height: 60px; }
+
+    .semana { grid-template-columns: repeat(7, 1fr); }
+
+    .cards { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+  <div class="header-band">
+    <header class="wrap">
+      <img class="wordmark" src="images/logo-adoratto-branco.png" alt="Adoratto Supermercado">
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#vantagens">Vantagens</a>
+        <a class="is-active" href="ofertas.html">Ofertas</a>
+        <a href="index.html#canais">Contato</a>
+      </nav>
+      <a class="btn" href="index.html#canais">Baixe o app</a>
+    </header>
+  </div>
+
+  <div class="wrap">
+    <section class="banner">
+      <span class="tag">Toda semana tem</span>
+      <h1>Ofertas Adoratto</h1>
+      <p>
+        Confira as promoções da semana e aproveite os melhores preços
+        na sua loja de sempre. (Conteúdo ainda de exemplo.)
+      </p>
+    </section>
+
+    <section class="calendario">
+      <h2>Calendário de <em>ofertas</em></h2>
+      <p>Veja o que está em promoção em cada dia da semana.</p>
+
+      <div class="semana">
+        <div class="dia hoje">
+          <p class="dia-nome">Segunda</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Terça</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Quarta</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Quinta</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Sexta</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Sábado</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+        <div class="dia">
+          <p class="dia-nome">Domingo</p>
+          <h3>Produto em oferta</h3>
+          <p>Descrição de exemplo da promoção do dia.</p>
+        </div>
+      </div>
+      <p class="nota">Dias e produtos de exemplo — serão substituídos pelo conteúdo real das ofertas.</p>
+    </section>
+
+    <section class="destaques">
+      <h2>Mais <em>destaques</em></h2>
+      <div class="cards">
+        <div class="card">
+          <span class="preco">R$ 0,00</span>
+          <h3>Nome do produto</h3>
+          <p>Descrição de exemplo do destaque.</p>
+        </div>
+        <div class="card">
+          <span class="preco">R$ 0,00</span>
+          <h3>Nome do produto</h3>
+          <p>Descrição de exemplo do destaque.</p>
+        </div>
+        <div class="card">
+          <span class="preco">R$ 0,00</span>
+          <h3>Nome do produto</h3>
+          <p>Descrição de exemplo do destaque.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Supermercado Adoratto · Jockey Plaza Shopping, Tarumã, Curitiba - PR, CEP 82810-350
+      <span class="credit">Projeto por <a href="https://www.instagram.com/joao.ti_?stkn=MTc5bmRjaWd2ZHV1bA==" target="_blank" rel="noopener">João P Gonçalves</a></span>
+    </footer>
+  </div>
+</body>
+</html>
