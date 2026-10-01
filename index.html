@@ -439,6 +439,19 @@
     padding: 2.5rem 0 3rem;
     font-size: 0.85rem;
     color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  footer .credit a {
+    color: var(--ink-soft);
+  }
+
+  footer .credit a:hover,
+  footer .credit a:focus-visible {
+    color: var(--ink);
   }
 
   /* ---------- PC ---------- */
@@ -625,7 +638,10 @@
       </div>
     </section>
 
-    <footer>Supermercado Adoratto · Jockey Plaza Shopping), no bairro Tarumã, em Curitiba - PR (CEP 82810-350).</footer>
+    <footer>
+      Supermercado Adoratto · Jockey Plaza Shopping, Tarumã, Curitiba - PR, CEP 82810-350
+      <span class="credit">Projeto por <a href="https://www.instagram.com/joao.ti_?stkn=MTc5bmRjaWd2ZHV1bA==" target="_blank" rel="noopener">João P Gonçalves</a></span>
+    </footer>
   </div>
 
   <script>
