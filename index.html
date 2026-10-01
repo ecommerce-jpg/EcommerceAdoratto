@@ -244,13 +244,40 @@
     gap: 1.25rem;
   }
 
+  .phone-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .phone-frame {
-    width: 230px;
+    width: 168px;
     aspect-ratio: 9 / 19;
     background: var(--ink);
-    border-radius: 34px;
-    padding: 10px;
+    border-radius: 26px;
+    padding: 7px;
     box-shadow: 0 18px 30px -18px rgba(33,38,30,0.35);
+    position: relative;
+    z-index: 2;
+  }
+
+  .phone-frame--side {
+    width: 86px;
+    border-radius: 17px;
+    padding: 5px;
+    opacity: 0.5;
+    transform: scale(0.92);
+    z-index: 1;
+    margin: 0 -14px;
+    overflow: hidden;
+  }
+
+  .phone-frame--side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
   }
 
   .phone-slides {
@@ -422,6 +449,19 @@
       grid-template-columns: repeat(4, 1fr);
     }
 
+    .phone-frame {
+      width: 230px;
+      border-radius: 34px;
+      padding: 10px;
+    }
+
+    .phone-frame--side {
+      width: 120px;
+      border-radius: 22px;
+      padding: 6px;
+      margin: 0 -24px;
+    }
+
     .canais {
       padding: 3.5rem 3rem;
     }
@@ -495,7 +535,12 @@
       <h2>Vantagens da <em>Adoratto</em> digital</h2>
 
       <div class="tutorial">
-        <div class="phone-frame">
+        <div class="phone-row">
+          <div class="phone-frame phone-frame--side">
+            <img id="phonePrev" src="images/tutorial-8.jpg" alt="Tela anterior">
+          </div>
+
+          <div class="phone-frame">
           <div class="phone-slides" id="phoneSlides">
             <div class="phone-slide is-active">
               <img src="images/tutorial-1.jpg" alt="Compre no Adoratto sem sair de casa">
@@ -521,6 +566,11 @@
             <div class="phone-slide">
               <img src="images/tutorial-8.jpg" alt="Receba sua compra em casa">
             </div>
+          </div>
+          </div>
+
+          <div class="phone-frame phone-frame--side">
+            <img id="phoneNext" src="images/tutorial-2.jpg" alt="Próxima tela">
           </div>
         </div>
         <ul class="phone-dots" id="phoneDots">
@@ -569,7 +619,14 @@
     (function () {
       var slides = document.querySelectorAll('#phoneSlides .phone-slide');
       var dots = document.querySelectorAll('#phoneDots li');
+      var prevPhone = document.getElementById('phonePrev');
+      var nextPhone = document.getElementById('phoneNext');
       if (!slides.length) return;
+
+      // Lista de imagens de cada tela, na mesma ordem do carrossel central
+      var images = Array.prototype.map.call(slides, function (slide) {
+        return slide.querySelector('img').getAttribute('src');
+      });
 
       var current = 0;
       var forwardDelay = 2200; // tempo parado em cada tela, avançando
@@ -583,6 +640,14 @@
         dots.forEach(function (dot, i) {
           dot.classList.toggle('is-active', i === index);
         });
+
+        // Celulares menores mostram sempre a tela anterior e a seguinte,
+        // acompanhando o carrossel central
+        var total = images.length;
+        var prevIndex = (index - 1 + total) % total;
+        var nextIndex = (index + 1) % total;
+        if (prevPhone) prevPhone.src = images[prevIndex];
+        if (nextPhone) nextPhone.src = images[nextIndex];
       }
 
       function step() {
